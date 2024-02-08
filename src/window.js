@@ -21,7 +21,7 @@
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
-import { StatusCodesIndex } from './http-status-codes/index.js';
+import { HttpCodesIndex } from './http-status-codes/index.js';
 
 export const HttpCodesWindow = GObject.registerClass({
     GTypeName: 'HttpCodesWindow',
@@ -36,16 +36,15 @@ export const HttpCodesWindow = GObject.registerClass({
     setupStatusCodeWindow() {
       var httpList = this._main_http_code_list
 
-      StatusCodesIndex.forEach(function (status) {
-        var row = this.createStatusCodeRow(status.code, status.description)
-        httpList.append(row)
-      }.bind(this));
+      HttpCodesIndex.forEach((code) => httpList
+        .append(this.createStatusCodeRow(code.httpCode, code.description)));
     }
 
     createStatusCodeRow(rowTitle, rowDescription) {
-      var row = new Adw.ActionRow({title: rowTitle, subtitle: rowDescription});
-      row.add_suffix(new Gtk.Image({iconName: 'right-symbolic'}));
-      return row;
+      return new Adw.ActionRow({
+        title: rowTitle,
+        subtitle: rowDescription,
+      });
     }
 });
 
