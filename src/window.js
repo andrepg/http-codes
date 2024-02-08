@@ -21,14 +21,40 @@
 import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
+import StatusCodes from './http-status-codes/StatusCodeDataset.js';
 
 export const HttpCodesWindow = GObject.registerClass({
     GTypeName: 'HttpCodesWindow',
     Template: 'resource:///io/github/andrepg/httpcodes/window.ui',
-    InternalChildren: ['label'],
+    InternalChildren: ['main_http_code_list'],
 }, class HttpCodesWindow extends Adw.ApplicationWindow {
     constructor(application) {
         super({ application });
+        this.setupStatusCodeWindow()
+    }
+
+    setupStatusCodeWindow() {
+      var httpList = this._main_http_code_list
+
+      this.statusCodeCategories().forEach(function (status) {
+        var row = this.createStatusCodeRow(status.code, status.description)
+        httpList.append(row)
+      }.bind(this));
+    }
+
+    createStatusCodeRow(rowTitle, rowDescription) {
+      var row = new Adw.ActionRow({title: rowTitle, subtitle: rowDescription});
+      row.add_suffix(new Gtk.Image({iconName: 'right-symbolic'}));
+      return row;
+    }
+
+    statusCodeCategories() {
+      return [
+        { code: '20x', description: 'Codes related with sucessfull requests', redirect: '' },
+        { code: '30x', description: 'Codes related with redirection responses', redirect: '' },
+        { code: '40x', description: 'Codes related wrong requests or validations', redirect: '' },
+        { code: '50x', description: 'Codes related with server errors and downsides', redirect: '' },
+      ];
     }
 });
 

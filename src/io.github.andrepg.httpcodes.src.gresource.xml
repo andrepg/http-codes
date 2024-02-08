@@ -3,5 +3,6 @@
   <gresource prefix="/io/github/andrepg/httpcodes/js">
     <file>main.js</file>
     <file>window.js</file>
+    <file>http-status-codes/StatusCodeDataset.js</file>
   </gresource>
 </gresources>
