@@ -1,0 +1,6 @@
+data/io.github.andrepg.httpcodes.desktop.in
+data/io.github.andrepg.httpcodes.metainfo.xml.in
+data/io.github.andrepg.httpcodes.gschema.xml
+src/main.js
+src/window.js
+src/window.ui
