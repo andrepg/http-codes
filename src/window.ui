@@ -20,11 +20,65 @@
           </object>
         </child>
         <property name="content">
-          <object class="GtkLabel" id="label">
-            <property name="label">Hello, World!</property>
-            <style>
-              <class name="title-1"/>
-            </style>
+          <object class="GtkBox">
+            <property name="margin-top">10</property>
+            <property name="margin-bottom">30</property>
+            <property name="margin-start">15</property>
+            <property name="margin-end">15</property>
+            <property name="orientation">1</property>
+
+            <child>
+              <object class="GtkLabel" id="label">
+                <property name="label">Choose a category</property>
+                <property name="margin-bottom">15</property>
+                <style>
+                  <class name="title-1"/>
+                </style>
+              </object>
+            </child>
+
+            <child>
+              <object class="GtkListBox">
+                <property name="selection-mode">0</property>
+                <style>
+                  <class name="boxed-list"/>
+                </style>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="true">20x</property>
+                    <property name="subtitle" translatable="true">This holds some server description</property>
+                    <child type="suffix">
+                      <object class="GtkImage">
+                        <property name="icon-name">right-symbolic</property>
+                      </object>
+                    </child>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="true">30x</property>
+                    <property name="subtitle" translatable="true">This holds some server description</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="true">40x</property>
+                    <property name="subtitle" translatable="true">This holds some server description</property>
+                  </object>
+                </child>
+
+                <child>
+                  <object class="AdwActionRow">
+                    <property name="title" translatable="true">50x</property>
+                    <property name="subtitle" translatable="true">This holds some server description</property>
+                  </object>
+                </child>
+
+              </object>
+            </child>
           </object>
         </property>
       </object>
