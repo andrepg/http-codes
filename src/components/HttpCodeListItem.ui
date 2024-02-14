@@ -1,0 +1,16 @@
+<interface>
+  <requires lib="gtk" version="4.0"/>
+  <requires lib="Adw" version="1.0"/>
+  <template class="HttpCodeListItem" parent="AdwActionRow">
+    <property name="title" translatable="true">Action Row can have a activatable widget</property>
+    <property name="subtitle" translatable="true">Click on the row to activate it</property>
+    <property name="activatable-widget">fire_http_details</property>
+    <child type="suffix">
+      <object class="GtkButton" id="fire_http_details">
+        <property name="has-frame">false</property>
+        <property name="icon-name">right-symbolic</property>
+        <property name="valign">3</property>
+      </object>
+    </child>
+  </template>
+</interface>
