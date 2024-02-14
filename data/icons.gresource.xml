@@ -1,0 +1,3 @@
+<gresource prefix="/io/github/andrepg/http-codes/icons/scalable/actions/">
+  <file preprocess="xml-stripblanks">right-symbolic.svg</file>
+</gresource>

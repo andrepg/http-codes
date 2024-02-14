@@ -41,10 +41,13 @@ export const HttpCodesWindow = GObject.registerClass({
     }
 
     createStatusCodeRow(rowTitle, rowDescription) {
-      return new Adw.ActionRow({
+      var row = new Adw.ActionRow({
         title: rowTitle,
         subtitle: rowDescription,
       });
+
+      row.add_suffix(Gtk.Image.new_from_icon_name('right-symbolic'));
+      return row;
     }
 });
 
