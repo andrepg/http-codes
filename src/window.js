@@ -31,6 +31,8 @@ export const HttpCodesWindow = GObject.registerClass({
 }, class HttpCodesWindow extends Adw.ApplicationWindow {
     constructor(application) {
         super({ application });
+
+        this.application = application
         this.setupStatusCodeWindow()
     }
 
@@ -42,11 +44,15 @@ export const HttpCodesWindow = GObject.registerClass({
     }
 
     createStatusCodeRow(httpCode, description) {
-      return new HttpCodeListItem({
+      var httpItem = new HttpCodeListItem({
         'title': httpCode,
         'subtitle': description,
         'target': httpCode
       });
+
+      httpItem.connect('open_http_item', (_, param) => console.log(param))
+
+      return httpItem;
     }
 });
 
