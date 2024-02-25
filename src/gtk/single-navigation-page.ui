@@ -24,7 +24,7 @@
             </child>
 
             <child>
-              <object class="GtkLabel">
+              <object class="GtkLabel" id="main_label">
                 <property name="margin-top">15</property>
                 <property name="margin-bottom">15</property>
                 <property name="margin-start">15</property>
@@ -38,14 +38,14 @@
             </child>
 
             <child>
-              <object class="GtkListBox" id="main_http_code_list">
+              <object class="GtkListBox" id="main_list">
                 <property name="margin-top">10</property>
                 <property name="margin-bottom">30</property>
                 <property name="margin-start">15</property>
                 <property name="margin-end">15</property>
                 <property name="selection-mode">0</property>
                 <style>
-                <class name="boxed-list"/>
+                  <class name="boxed-list"/>
                 </style>
                 <child>
                   <!-- Here comes our HttpCodeListItem -->

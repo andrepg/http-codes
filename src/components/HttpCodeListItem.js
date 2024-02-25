@@ -6,7 +6,7 @@ const HttpCodeListItem = GObject.registerClass(
   {
     GTypeName: 'HttpCodeListItem',
     Signals: {
-      'open_http_item': {
+      'clicked': {
         param_types: [GObject.TYPE_STRING]
       },
     },
@@ -30,7 +30,7 @@ const HttpCodeListItem = GObject.registerClass(
   }
 
   triggerItemClick(targetPath) {
-    this.emit('open_http_item', targetPath.toString())
+    this.emit('clicked', targetPath.toString())
   }
 });
 

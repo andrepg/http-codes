@@ -21,8 +21,7 @@
 import GObject from 'gi://GObject';
 import Adw from 'gi://Adw';
 import { HttpCodesIndex } from './http-status-codes/index.js';
-import HttpCodeListItem from './components/HttpCodeListItem.js';
-import HttpCodeDetails from './components/HttpCodeDetails.js';
+import HttpCodeListItem from './components/HttpCodeListItem.js'
 import SingleNavigationPage from './components/singleNavigationPage.js';
 
 export const HttpCodesWindow = GObject.registerClass({
@@ -34,51 +33,50 @@ export const HttpCodesWindow = GObject.registerClass({
     super({ application });
 
     this.createMainWindow();
+    this.createHttpCodeDetailsWindow();
+    this.feedMainWindowContent();
   }
 
   createMainWindow() {
-    var page = new SingleNavigationPage();
-    page.set_title("Choose a HTTP Status category");
-    this._navigation_view.add(page)
+    this.httpCodeIndexPage = new SingleNavigationPage();
+    this.httpCodeIndexPage.set_title("Choose a HTTP Status category");
+    this._navigation_view.add(this.httpCodeIndexPage)
   }
 
-  feedHttpCodeList() {
-    HttpCodesIndex.forEach(
-      (code) => this._main_http_code_list.append(
-        this.createStatusCodeRow(code.httpCode, code.description)
-      )
-    );
+  createHttpCodeDetailsWindow() {
+    this.httpCodeDetailsPage = new SingleNavigationPage();
+    this.httpCodeDetailsPage.set_title("Choose a HTTP Status");
+    this._navigation_view.add(this.httpCodeDetailsPage)
   }
 
-  createStatusCodeRow(httpCode, description) {
-    var httpItem = new HttpCodeListItem({
-      'title': httpCode,
-      'subtitle': description,
-      'target': httpCode
+  feedMainWindowContent() {
+    HttpCodesIndex.forEach(code => {
+      var row = new HttpCodeListItem({
+        title: code.httpCode,
+        subtitle: code.description,
+        target: code.httpCode,
+      });
+      row.connect('clicked', (_, target) => {
+        this.feedHttpCodeDetailsWindow(target);
+        this._navigation_view.push(this.httpCodeDetailsPage)
+      })
+      this.httpCodeIndexPage.add_list_item(row);
     });
-    httpItem.connect('open_http_item', this.showHttpCodeDetails.bind(this));
-    return httpItem;
   }
 
-  showHttpCodeDetails(_, target) {
-    // Set page title
-    this._page_http_code_details.set_title(target + " Status Codes")
+  feedHttpCodeDetailsWindow(target) {
+    this.httpCodeDetailsPage.clear_list();
+    var httpCodes = HttpCodesIndex.find(element => element.httpCode == target);
 
-    // Add our codes to sublist
-    this._list_http_code_details.remove_all();
-    var httpItems = HttpCodesIndex.find((item) => item.httpCode == target);
-    httpItems.details.forEach((httpItem) => {
-      this._list_http_code_details.append(
-        new HttpCodeDetails({
-          title: httpItem.title,
-          subtitle: httpItem.description,
-          explanation: httpItem.explanation
-        })
-      )
+    httpCodes.details.forEach(element => {
+      var row = new Adw.ActionRow({
+        title: element.title,
+        subtitle: element.description
+      });
+
+      this.httpCodeDetailsPage.set_label(target)
+      this.httpCodeDetailsPage.add_list_item(row);
     });
-
-    // Push page to navigation after populate
-    this._navigation_view.push(this._page_http_code_details)
   }
 });
 
