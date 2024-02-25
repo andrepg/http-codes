@@ -4,6 +4,7 @@
     <file>main.js</file>
     <file>window.js</file>
     <file>http-status-codes/index.js</file>
+    <file>http-status-codes/20x.js</file>
     <file>components/HttpCodeListItem.js</file>
   </gresource>
 </gresources>

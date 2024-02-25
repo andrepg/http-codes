@@ -25,44 +25,63 @@ import { HttpCodesIndex } from './http-status-codes/index.js';
 import HttpCodeListItem from './components/HttpCodeListItem.js';
 
 export const HttpCodesWindow = GObject.registerClass({
-    GTypeName: 'HttpCodesWindow',
-    Template: 'resource:///io/github/andrepg/httpcodes/window.ui',
-    InternalChildren: [
-      'main_http_code_list',
-      'navigation_view',
-      'page_http_code_details',
-      'list_http_code_details'
-    ],
+  GTypeName: 'HttpCodesWindow',
+  Template: 'resource:///io/github/andrepg/httpcodes/window.ui',
+  InternalChildren: [
+    'main_http_code_list',
+    'navigation_view',
+    'page_http_code_details',
+    'list_http_code_details'
+  ],
 }, class HttpCodesWindow extends Adw.ApplicationWindow {
-    constructor(application) {
-        super({ application });
-        this.feedHttpCodeList()
-    }
+  constructor(application) {
+    super({ application });
+    this.feedHttpCodeList()
+  }
 
-    feedHttpCodeList() {
-      HttpCodesIndex.forEach(
-        (code) => this._main_http_code_list.append(
-          this.createStatusCodeRow(code.httpCode, code.description)
-        )
-      );
-    }
+  feedHttpCodeList() {
+    HttpCodesIndex.forEach(
+      (code) => this._main_http_code_list.append(
+        this.createStatusCodeRow(code.httpCode, code.description)
+      )
+    );
+  }
 
-    createStatusCodeRow(httpCode, description) {
-      var httpItem = new HttpCodeListItem({
-        'title': httpCode,
-        'subtitle': description,
-        'target': httpCode
-      });
-      httpItem.connect('open_http_item', this.showHttpCodeDetails.bind(this));
-      return httpItem;
-    }
+  createStatusCodeRow(httpCode, description) {
+    var httpItem = new HttpCodeListItem({
+      'title': httpCode,
+      'subtitle': description,
+      'target': httpCode
+    });
+    httpItem.connect('open_http_item', this.showHttpCodeDetails.bind(this));
+    return httpItem;
+  }
 
-    showHttpCodeDetails(_, target) {
-      this._list_http_code_details.remove_all()
+  showHttpCodeDetails(_, target) {
+    // Set page title
+    this._page_http_code_details.set_title(target + " Status Codes")
 
-      this._page_http_code_details.set_title(target + " Status Codes")
+    // Add our codes to sublist
+    var httpItems = HttpCodesIndex.find((item) => item.httpCode == target);
+    httpItems.details.forEach((httpItem) => {
+      var expanderRow = new Adw.ExpanderRow();
+      expanderRow.title = httpItem.title
+      expanderRow.subtitle = httpItem.description
+      expanderRow.add_row(
+        new Gtk.Label({
+          label: httpItem.explanation,
+          margin_top: 15,
+          margin_bottom: 15,
+          margin_start: 15,
+          margin_end: 15,
+          wrap: true
+        })
+      )
+      this._list_http_code_details.append(expanderRow)
+    });
 
-      this._navigation_view.push(this._page_http_code_details)
-    }
+    // Push page to navigation after populate
+    this._navigation_view.push(this._page_http_code_details)
+  }
 });
 
