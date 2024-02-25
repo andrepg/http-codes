@@ -8,21 +8,18 @@ export const HttpCodes20x = [
       "If you made a GET could mean that your request information it" +
       " is in body. And if a POST was made could means that your data was accepted correctly."
   },
-
   {
     title: "201 - Created",
     description: "A request has been accepted and a resource was created.",
     explanation: "If you are trying to POST a resource to a server, it will" +
       " answer you with this code when successfully created a new resource.",
   },
-
   {
     title: "202 - Accepted",
     description: "Request accepted for processing, but not completed yet.",
     explanation: "You made a request to the server that was accepted, but" +
      " not completed yet. You should check on later for more status.",
   },
-
   {
     title: "203 - Non-Authoritative Information",
     description: "Received modified version by proxy",
@@ -30,7 +27,6 @@ export const HttpCodes20x = [
       " the original server, but it's giving you a modified version of the" +
       " original response."
   },
-
   {
     title: "204 - No Content",
     description: "The server response is empty",
@@ -38,14 +34,30 @@ export const HttpCodes20x = [
      " However, the server did not expect to send you anything. Therefore," +
      " you'll receive a NO CONTENT response.",
   },
-
   {
     title: "205 - Reset Content",
+    description: "Asks for reset content after success",
+    explanation: "You made a request that went OK. The server don't want to" +
+      " send any response body and it's requesting you to clear any content."
+  },
+  {
+    title: "206 - Partial Content",
     description: "",
     explanation: ""
   },
-  { title: "206", description: "", explanation: "" },
-  { title: "207", description: "", explanation: "" },
-  { title: "208", description: "", explanation: "" },
-  { title: "226", description: "", explanation: "" },
+  {
+    title: "207 - Multi-Status",
+    description: "",
+    explanation: ""
+  },
+  {
+    title: "208 - Already Reported",
+    description: "",
+    explanation: ""
+  },
+  {
+    title: "226 - IM Used",
+    description: "",
+    explanation: ""
+  },
 ];
