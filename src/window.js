@@ -27,20 +27,24 @@ import HttpCodeListItem from './components/HttpCodeListItem.js';
 export const HttpCodesWindow = GObject.registerClass({
     GTypeName: 'HttpCodesWindow',
     Template: 'resource:///io/github/andrepg/httpcodes/window.ui',
-    InternalChildren: ['main_http_code_list'],
+    InternalChildren: [
+      'main_http_code_list',
+      'navigation_view',
+      'page_http_code_details',
+      'list_http_code_details'
+    ],
 }, class HttpCodesWindow extends Adw.ApplicationWindow {
     constructor(application) {
         super({ application });
-
-        this.application = application
-        this.setupStatusCodeWindow()
+        this.feedHttpCodeList()
     }
 
-    setupStatusCodeWindow() {
-      var httpList = this._main_http_code_list
-
-      HttpCodesIndex.forEach((code) => httpList
-        .append(this.createStatusCodeRow(code.httpCode, code.description)));
+    feedHttpCodeList() {
+      HttpCodesIndex.forEach(
+        (code) => this._main_http_code_list.append(
+          this.createStatusCodeRow(code.httpCode, code.description)
+        )
+      );
     }
 
     createStatusCodeRow(httpCode, description) {
@@ -49,10 +53,16 @@ export const HttpCodesWindow = GObject.registerClass({
         'subtitle': description,
         'target': httpCode
       });
-
-      httpItem.connect('open_http_item', (_, param) => console.log(param))
-
+      httpItem.connect('open_http_item', this.showHttpCodeDetails.bind(this));
       return httpItem;
+    }
+
+    showHttpCodeDetails(_, target) {
+      this._list_http_code_details.remove_all()
+
+      this._page_http_code_details.set_title(target + " Status Codes")
+
+      this._navigation_view.push(this._page_http_code_details)
     }
 });
 
