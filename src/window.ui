@@ -33,6 +33,10 @@
 
                 <child>
                   <object class="GtkLabel">
+                    <property name="margin-top">15</property>
+                    <property name="margin-bottom">15</property>
+                    <property name="margin-start">15</property>
+                    <property name="margin-end">15</property>
                     <property name="label">Choose a category</property>
                     <property name="margin-bottom">15</property>
                     <style>
@@ -85,8 +89,11 @@
 
                  <child>
                   <object class="GtkLabel">
-                    <property name="label">Choose a HTTP Status Code</property>
+                    <property name="margin-top">15</property>
                     <property name="margin-bottom">15</property>
+                    <property name="margin-start">15</property>
+                    <property name="margin-end">15</property>
+                    <property name="label">Choose a HTTP Status Code</property>
                     <style>
                       <class name="title-1"/>
                     </style>
