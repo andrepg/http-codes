@@ -19,25 +19,27 @@
  */
 
 import GObject from 'gi://GObject';
-import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
 import { HttpCodesIndex } from './http-status-codes/index.js';
 import HttpCodeListItem from './components/HttpCodeListItem.js';
 import HttpCodeDetails from './components/HttpCodeDetails.js';
+import SingleNavigationPage from './components/singleNavigationPage.js';
 
 export const HttpCodesWindow = GObject.registerClass({
   GTypeName: 'HttpCodesWindow',
   Template: 'resource:///io/github/andrepg/httpcodes/window.ui',
-  InternalChildren: [
-    'main_http_code_list',
-    'navigation_view',
-    'page_http_code_details',
-    'list_http_code_details'
-  ],
+  InternalChildren: ['navigation_view'],
 }, class HttpCodesWindow extends Adw.ApplicationWindow {
   constructor(application) {
     super({ application });
-    this.feedHttpCodeList()
+
+    this.createMainWindow();
+  }
+
+  createMainWindow() {
+    var page = new SingleNavigationPage();
+    page.set_title("Choose a HTTP Status category");
+    this._navigation_view.add(page)
   }
 
   feedHttpCodeList() {

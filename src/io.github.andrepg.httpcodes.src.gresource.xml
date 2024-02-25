@@ -9,6 +9,7 @@
     <file>http-status-codes/30x.js</file>
     <file>http-status-codes/40x.js</file>
 
+    <file>components/singleNavigationPage.js</file>
     <file>components/HttpCodeListItem.js</file>
     <file>components/HttpCodeDetails.js</file>
   </gresource>
