@@ -6,5 +6,6 @@
     <file>http-status-codes/index.js</file>
     <file>http-status-codes/20x.js</file>
     <file>components/HttpCodeListItem.js</file>
+    <file>components/HttpCodeDetails.js</file>
   </gresource>
 </gresources>

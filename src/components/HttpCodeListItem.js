@@ -10,7 +10,7 @@ const HttpCodeListItem = GObject.registerClass(
         param_types: [GObject.TYPE_STRING]
       },
     },
-    Template: 'resource:///io/github/andrepg/httpcodes/components/HttpCodeListItem.ui',
+    Template: 'resource:///io/github/andrepg/httpcodes/gtk/http-code-list-item.ui',
     InternalChildren: ['fire_http_details'],
     Properties: {
       'target': GObject.ParamSpec.string(

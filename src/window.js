@@ -23,6 +23,7 @@ import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
 import { HttpCodesIndex } from './http-status-codes/index.js';
 import HttpCodeListItem from './components/HttpCodeListItem.js';
+import HttpCodeDetails from './components/HttpCodeDetails.js';
 
 export const HttpCodesWindow = GObject.registerClass({
   GTypeName: 'HttpCodesWindow',
@@ -62,22 +63,16 @@ export const HttpCodesWindow = GObject.registerClass({
     this._page_http_code_details.set_title(target + " Status Codes")
 
     // Add our codes to sublist
+    this._list_http_code_details.remove_all();
     var httpItems = HttpCodesIndex.find((item) => item.httpCode == target);
     httpItems.details.forEach((httpItem) => {
-      var expanderRow = new Adw.ExpanderRow();
-      expanderRow.title = httpItem.title
-      expanderRow.subtitle = httpItem.description
-      expanderRow.add_row(
-        new Gtk.Label({
-          label: httpItem.explanation,
-          margin_top: 15,
-          margin_bottom: 15,
-          margin_start: 15,
-          margin_end: 15,
-          wrap: true
+      this._list_http_code_details.append(
+        new HttpCodeDetails({
+          title: httpItem.title,
+          subtitle: httpItem.description,
+          explanation: httpItem.explanation
         })
       )
-      this._list_http_code_details.append(expanderRow)
     });
 
     // Push page to navigation after populate
