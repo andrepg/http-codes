@@ -5,6 +5,11 @@ import Adw from 'gi://Adw';
 const HttpCodeListItem = GObject.registerClass(
   {
     GTypeName: 'HttpCodeListItem',
+    Signals: {
+      'open_http_item': {
+        param_types: [GObject.TYPE_STRING]
+      },
+    },
     Template: 'resource:///io/github/andrepg/httpcodes/components/HttpCodeListItem.ui',
     InternalChildren: ['fire_http_details'],
     Properties: {
@@ -16,18 +21,17 @@ const HttpCodeListItem = GObject.registerClass(
         ''
       )
     }
-  },
-  class HttpCodeListItem extends Adw.ActionRow {
-    constructor(constructProperties = {}) {
-       super(constructProperties);
+  }, class HttpCodeListItem extends Adw.ActionRow {
+  constructor(constructProperties = {}) {
+    super(constructProperties);
 
-       print(constructProperties.target)
-    }
+    this._fire_http_details.connect('clicked', () =>
+      this.triggerItemClick(constructProperties.target));
+  }
 
-    printTarget() {
-      print(this._target);
-    }
-
-  });
+  triggerItemClick(targetPath) {
+    this.emit('open_http_item', targetPath.toString())
+  }
+});
 
 export default HttpCodeListItem;
