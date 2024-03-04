@@ -38,18 +38,35 @@ export const HttpCodesWindow = GObject.registerClass({
     this.feedMainWindowContent();
   }
 
+  /**
+  * creates the first main page to our application.
+  * this page should display a row with HTTP codes that
+  * leads our user to the next screen, where he can learn
+  * more about each category (20x, 30x, 40x, etc.)
+  */
   createMainWindow() {
     this.httpCodeIndexPage = new SingleNavigationPage();
     this.httpCodeIndexPage.set_title("Choose a HTTP Status category");
     this._navigation_view.add(this.httpCodeIndexPage)
   }
 
+
+  /**
+  * creates our second page, to show any category selected by
+  * our user on first page. here it's possible to learn more about
+  * each HTTP code from the category selected before
+  */
   createHttpCodeDetailsWindow() {
     this.httpCodeDetailsPage = new SingleNavigationPage();
     this.httpCodeDetailsPage.set_title("Choose a HTTP Status");
     this._navigation_view.add(this.httpCodeDetailsPage)
   }
 
+  /**
+  * this function feeds our first page with each HTTP server category
+  * it's here where we should feed our list view to show each code
+  * also, it connects "clicked" event to open any category
+  */
   feedMainWindowContent() {
     HttpCodesIndex.forEach(code => {
       var row = new HttpCodeListItem({
@@ -67,6 +84,11 @@ export const HttpCodesWindow = GObject.registerClass({
     });
   }
 
+  /**
+  * feed the second page, that shows details about each HTTP code category
+  * here we'll show the respective Codes, Titles, Description and any
+  * other relevant information to help our user to understand better
+  */
   feedHttpCodeDetailsWindow(target) {
     this.httpCodeDetailsPage.clear_list();
     var httpCodes = HttpCodesIndex.find(element => element.httpCode == target);
@@ -88,6 +110,10 @@ export const HttpCodesWindow = GObject.registerClass({
     });
   }
 
+  /**
+  * creates our HTTP code label to display on second page, allowing us to
+  * build line with a reliable interface for each HTTP code inside categories
+  */
   createHttpCodeLabel(code) {
     var label = new Gtk.Button({
       margin_top: 5,
