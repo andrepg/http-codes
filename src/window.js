@@ -22,7 +22,7 @@ import GObject from 'gi://GObject';
 import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
 import { HttpCodesIndex } from './http-status-codes/index.js';
-import HttpCodeListItem from './components/HttpCodeListItem.js'
+import HttpCodeListItem from './components/httpCodeListItem.js'
 import SingleNavigationPage from './components/singleNavigationPage.js';
 
 export const HttpCodesWindow = GObject.registerClass({
@@ -85,6 +85,7 @@ export const HttpCodesWindow = GObject.registerClass({
   }
 
   /**
+  * TODO change this functions to build accordingly with components/httpCodeDetails.js
   * feed the second page, that shows details about each HTTP code category
   * here we'll show the respective Codes, Titles, Description and any
   * other relevant information to help our user to understand better
@@ -111,6 +112,7 @@ export const HttpCodesWindow = GObject.registerClass({
   }
 
   /**
+  * TODO change this functions to build accordingly with components/httpCodeDetails.js
   * creates our HTTP code label to display on second page, allowing us to
   * build line with a reliable interface for each HTTP code inside categories
   */
