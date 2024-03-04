@@ -19,6 +19,7 @@
  */
 
 import GObject from 'gi://GObject';
+import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
 import { HttpCodesIndex } from './http-status-codes/index.js';
 import HttpCodeListItem from './components/HttpCodeListItem.js'
@@ -56,10 +57,12 @@ export const HttpCodesWindow = GObject.registerClass({
         subtitle: code.description,
         target: code.httpCode,
       });
+
       row.connect('clicked', (_, target) => {
         this.feedHttpCodeDetailsWindow(target);
         this._navigation_view.push(this.httpCodeDetailsPage)
-      })
+      });
+
       this.httpCodeIndexPage.add_list_item(row);
     });
   }
@@ -69,14 +72,29 @@ export const HttpCodesWindow = GObject.registerClass({
     var httpCodes = HttpCodesIndex.find(element => element.httpCode == target);
 
     httpCodes.details.forEach(element => {
-      var row = new Adw.ActionRow({
+      const rowProperties = {
         title: element.title,
-        subtitle: element.description
-      });
+        subtitle: element.description,
+        target: element.code.toString()
+      };
+
+      var row = new HttpCodeListItem(rowProperties);
+
+      row.add_prefix(this.createHttpCodeLabel(element.code))
+      row.connect('clicked', (caller, target) => console.log(caller, target));
 
       this.httpCodeDetailsPage.set_label(target)
       this.httpCodeDetailsPage.add_list_item(row);
     });
+  }
+
+  createHttpCodeLabel(code) {
+    var label = new Gtk.Button({
+      margin_top: 5,
+      margin_bottom: 5,
+    });
+    label.set_child(new Gtk.Label({ label: code }));
+    return label;
   }
 });
 
