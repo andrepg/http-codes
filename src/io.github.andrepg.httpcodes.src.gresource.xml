@@ -10,7 +10,7 @@
     <file>http-status-codes/40x.js</file>
 
     <file>components/singleNavigationPage.js</file>
-    <file>components/HttpCodeListItem.js</file>
-    <file>components/HttpCodeDetails.js</file>
+    <file>components/httpCodeListItem.js</file>
+    <file>components/httpCodeDetails.js</file>
   </gresource>
 </gresources>
