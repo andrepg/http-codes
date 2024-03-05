@@ -19,13 +19,58 @@
  */
 
 export const HttpCodes30x = [
-  { code: "300", title: "300", description: "", explanation: "" },
-  { code: "301", title: "301", description: "", explanation: "" },
-  { code: "302", title: "302", description: "", explanation: "" },
-  { code: "303", title: "303", description: "", explanation: "" },
-  { code: "304", title: "304", description: "", explanation: "" },
-  { code: "305", title: "305", description: "", explanation: "" },
-  { code: "306", title: "306", description: "", explanation: "" },
-  { code: "307", title: "307", description: "", explanation: "" },
-  { code: "308", title: "308", description: "", explanation: "" },
+  {
+    code: "300",
+    title: "Multiple Choices",
+    description: "Server has given multiple choices to request resource",
+    explanation: ""
+  },
+  {
+    code: "301",
+    title: "Moved Permanently",
+    description: "This and all future requests should be redirect",
+    explanation: ""
+  },
+  {
+    code: "302",
+    title: "Found (former Moved Temporarily)",
+    description: "Indicates that your resource was move to another location",
+    explanation: ""
+  },
+  {
+    code: "303",
+    title: "See other",
+    description: "You should make a GET request to another resource",
+    explanation: ""
+  },
+  {
+    code: "304",
+    title: "Not Modified",
+    description: "The resource you request was not modified since last request",
+    explanation: ""
+  },
+  {
+    code: "305",
+    title: "Use Proxy",
+    description: "This and subsequent requests should use proxy",
+    explanation: ""
+  },
+  {
+    code: "306",
+    title: "Switch Proxy (deprecated)",
+    description: "Originally meant that you should issue your requests through a proxy",
+    explanation: ""
+  },
+  {
+    code: "307",
+    title: "Temporary redirect",
+    description: "You should issue the exact same request to another URI",
+    explanation: ""
+  },
+  {
+    code: "308",
+    title: "Permanent Redirect",
+    description: "This and all future requests should be redirect (for same HTTP methods)",
+    explanation: ""
+  },
 ];

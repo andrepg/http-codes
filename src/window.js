@@ -34,7 +34,6 @@ export const HttpCodesWindow = GObject.registerClass({
     super({ application });
 
     this.createMainWindow();
-    this.createHttpCodeDetailsWindow();
     this.feedMainWindowContent();
   }
 
@@ -47,22 +46,15 @@ export const HttpCodesWindow = GObject.registerClass({
   createMainWindow() {
     this.httpCodeIndexPage = new SingleNavigationPage();
     this.httpCodeIndexPage.set_title("Choose a HTTP Status category");
+
+    this.httpCodeGroupIndexPage = new SingleNavigationPage();
+    this.httpCodeGroupIndexPage.set_title("Choose a HTTP Status code");
+
     this._navigation_view.add(this.httpCodeIndexPage)
+    this._navigation_view.add(this.httpCodeGroupIndexPage)
   }
 
-
-  /**
-  * creates our second page, to show any category selected by
-  * our user on first page. here it's possible to learn more about
-  * each HTTP code from the category selected before
-  */
-  createHttpCodeDetailsWindow() {
-    this.httpCodeDetailsPage = new SingleNavigationPage();
-    this.httpCodeDetailsPage.set_title("Choose a HTTP Status");
-    this._navigation_view.add(this.httpCodeDetailsPage)
-  }
-
-  /**
+/**
   * this function feeds our first page with each HTTP server category
   * it's here where we should feed our list view to show each code
   * also, it connects "clicked" event to open any category
@@ -75,10 +67,7 @@ export const HttpCodesWindow = GObject.registerClass({
         target: code.httpCode,
       });
 
-      row.connect('clicked', (_, target) => {
-        this.feedHttpCodeDetailsWindow(target);
-        this._navigation_view.push(this.httpCodeDetailsPage)
-      });
+      row.connect('clicked', (_, target) => this.showHttpCodeGroupIndex(target));
 
       this.httpCodeIndexPage.add_list_item(row);
     });
@@ -90,8 +79,13 @@ export const HttpCodesWindow = GObject.registerClass({
   * here we'll show the respective Codes, Titles, Description and any
   * other relevant information to help our user to understand better
   */
+  showHttpCodeGroupIndex (target) {
+    this.feedHttpCodeDetailsWindow(target)
+    this._navigation_view.push(this.httpCodeGroupIndexPage)
+  }
+
   feedHttpCodeDetailsWindow(target) {
-    this.httpCodeDetailsPage.clear_list();
+    this.httpCodeGroupIndexPage.clear_list();
     var httpCodes = HttpCodesIndex.find(element => element.httpCode == target);
 
     httpCodes.details.forEach(element => {
@@ -103,11 +97,11 @@ export const HttpCodesWindow = GObject.registerClass({
 
       var row = new HttpCodeListItem(rowProperties);
 
-      row.add_prefix(this.createHttpCodeLabel(element.code))
+      row.add_prefix(this.createHttpCodeBadge(element.code))
       row.connect('clicked', (caller, target) => console.log(caller, target));
 
-      this.httpCodeDetailsPage.set_label(target)
-      this.httpCodeDetailsPage.add_list_item(row);
+      this.httpCodeGroupIndexPage.set_label(target)
+      this.httpCodeGroupIndexPage.add_list_item(row);
     });
   }
 
@@ -116,7 +110,7 @@ export const HttpCodesWindow = GObject.registerClass({
   * creates our HTTP code label to display on second page, allowing us to
   * build line with a reliable interface for each HTTP code inside categories
   */
-  createHttpCodeLabel(code) {
+  createHttpCodeBadge(code) {
     var label = new Gtk.Button({
       margin_top: 5,
       margin_bottom: 5,
