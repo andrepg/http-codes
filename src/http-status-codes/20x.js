@@ -69,25 +69,25 @@ export const HttpCodes20x = [
   {
     code: "206",
     title: "Partial Content",
-    description: "",
+    description: "Server is delivering only part of requested resource",
     explanation: ""
   },
   {
     code: "207",
     title: "Multi-Status",
-    description: "",
+    description: "When using WebDav, body can contain multiple response codes",
     explanation: ""
   },
   {
     code: "208",
     title: "Already Reported",
-    description: "",
+    description: "This DAV resource has already been enumerated and not being included again",
     explanation: ""
   },
   {
     code: "226",
     title: "IM Used",
-    description: "",
+    description: "Your request was processed and your response contains one or more manipulations",
     explanation: ""
   },
 ];
