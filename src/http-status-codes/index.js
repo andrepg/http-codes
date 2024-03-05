@@ -21,6 +21,7 @@
 import { HttpCodes20x } from "./20x.js";
 import { HttpCodes30x } from "./30x.js";
 import { HttpCodes40x } from "./40x.js";
+import { HttpCodes50x } from "./50x.js";
 
 export const HttpCodesIndex = [
   {
@@ -41,7 +42,7 @@ export const HttpCodesIndex = [
   {
     httpCode: '50x',
     description: 'Codes related with server errors and downsides',
-    details: [],
+    details: HttpCodes50x,
   },
 ]
 
