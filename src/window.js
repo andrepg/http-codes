@@ -80,8 +80,8 @@ export const HttpCodesWindow = GObject.registerClass({
   * other relevant information to help our user to understand better
   */
   showHttpCodeGroupIndex (target) {
-    this.feedHttpCodeDetailsWindow(target)
     this._navigation_view.push(this.httpCodeGroupIndexPage)
+    this.feedHttpCodeDetailsWindow(target)
   }
 
   feedHttpCodeDetailsWindow(target) {
