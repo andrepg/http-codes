@@ -8,6 +8,7 @@
     <file>http-status-codes/20x.js</file>
     <file>http-status-codes/30x.js</file>
     <file>http-status-codes/40x.js</file>
+    <file>http-status-codes/50x.js</file>
 
     <file>components/singleNavigationPage.js</file>
     <file>components/httpCodeListItem.js</file>
