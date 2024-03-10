@@ -13,5 +13,8 @@
     <file>components/singleNavigationPage.js</file>
     <file>components/httpCodeListItem.js</file>
     <file>components/httpCodeDetails.js</file>
+
+    <file>pages/httpCodesIndexPage.js</file>
+    <file>pages/httpCodesGroupPage.js</file>
   </gresource>
 </gresources>
