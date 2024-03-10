@@ -114,6 +114,8 @@ export const HttpCodesWindow = GObject.registerClass({
     var label = new Gtk.Button({
       margin_top: 5,
       margin_bottom: 5,
+      valign: Gtk.Align.CENTER,
+      halign: Gtk.Align.CENTER,
     });
     label.set_child(new Gtk.Label({ label: code }));
     return label;
