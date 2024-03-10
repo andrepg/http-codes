@@ -100,7 +100,7 @@ export const HttpCodesWindow = GObject.registerClass({
       row.add_prefix(this.createHttpCodeBadge(element.code))
       row.connect('clicked', (caller, target) => console.log(caller, target));
 
-      this.httpCodeGroupIndexPage.set_label(target)
+      this.httpCodeGroupIndexPage.set_label('Code Group ' + target)
       this.httpCodeGroupIndexPage.add_list_item(row);
     });
   }
