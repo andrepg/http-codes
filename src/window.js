@@ -19,106 +19,28 @@
  */
 
 import GObject from 'gi://GObject';
-import Gtk from 'gi://Gtk';
 import Adw from 'gi://Adw';
 import { HttpCodesIndex } from './http-status-codes/index.js';
-import HttpCodeListItem from './components/httpCodeListItem.js'
-import SingleNavigationPage from './components/singleNavigationPage.js';
+import HttpCodesIndexPageHandler from './pages/httpCodesIndexPage.js';
 
 export const HttpCodesWindow = GObject.registerClass({
   GTypeName: 'HttpCodesWindow',
   Template: 'resource:///io/github/andrepg/httpcodes/window.ui',
   InternalChildren: ['navigation_view'],
 }, class HttpCodesWindow extends Adw.ApplicationWindow {
+
   constructor(application) {
     super({ application });
-
-    this.createMainWindow();
-    this.feedMainWindowContent();
+    this.buildThisPage();
   }
 
-  /**
-  * creates the first main page to our application.
-  * this page should display a row with HTTP codes that
-  * leads our user to the next screen, where he can learn
-  * more about each category (20x, 30x, 40x, etc.)
-  */
-  createMainWindow() {
-    this.httpCodeIndexPage = new SingleNavigationPage();
-    this.httpCodeIndexPage.set_title("Choose a HTTP Status category");
-
-    this.httpCodeGroupIndexPage = new SingleNavigationPage();
-    this.httpCodeGroupIndexPage.set_title("Choose a HTTP Status code");
-
-    this._navigation_view.add(this.httpCodeIndexPage)
-    this._navigation_view.add(this.httpCodeGroupIndexPage)
+  buildThisPage() {
+    // This is really necessary? NO, but I wan't my code "pretty" and legible
+    var thisPage = null;
+    thisPage = HttpCodesIndexPageHandler.buildPage();
+    thisPage = HttpCodesIndexPageHandler.feedPage(HttpCodesIndex, thisPage)
+    this._navigation_view.add(thisPage)
   }
 
-/**
-  * this function feeds our first page with each HTTP server category
-  * it's here where we should feed our list view to show each code
-  * also, it connects "clicked" event to open any category
-  */
-  feedMainWindowContent() {
-    HttpCodesIndex.forEach(code => {
-      var row = new HttpCodeListItem({
-        title: code.httpCode,
-        subtitle: code.description,
-        target: code.httpCode,
-      });
-
-      row.connect('clicked', (_, target) => this.showHttpCodeGroupIndex(target));
-
-      this.httpCodeIndexPage.add_list_item(row);
-    });
-  }
-
-  /**
-  * TODO change this functions to build accordingly with components/httpCodeDetails.js
-  * feed the second page, that shows details about each HTTP code category
-  * here we'll show the respective Codes, Titles, Description and any
-  * other relevant information to help our user to understand better
-  */
-  showHttpCodeGroupIndex (target) {
-    this._navigation_view.push(this.httpCodeGroupIndexPage)
-    this.feedHttpCodeDetailsWindow(target)
-  }
-
-  feedHttpCodeDetailsWindow(target) {
-    this.httpCodeGroupIndexPage.clear_list();
-    var httpCodes = HttpCodesIndex.find(element => element.httpCode == target);
-
-    httpCodes.details.forEach(element => {
-      const rowProperties = {
-        title: element.title,
-        subtitle: element.description,
-        target: element.code.toString()
-      };
-
-      var row = new HttpCodeListItem(rowProperties);
-
-      row.add_prefix(this.createHttpCodeBadge(element.code))
-      row.connect('clicked', (caller, target) => console.log(caller, target));
-
-      this.httpCodeGroupIndexPage.set_label('Code Group ' + target)
-      this.httpCodeGroupIndexPage.add_list_item(row);
-    });
-  }
-
-  /**
-  * TODO change this functions to build accordingly with components/httpCodeDetails.js
-  * creates our HTTP code label to display on second page, allowing us to
-  * build line with a reliable interface for each HTTP code inside categories
-  */
-  createHttpCodeBadge(code) {
-    var label = new Gtk.Button({
-      margin_top: 5,
-      margin_bottom: 5,
-      valign: Gtk.Align.CENTER,
-      halign: Gtk.Align.CENTER,
-    });
-    label.set_child(new Gtk.Label({ label: code }));
-    return label;
-  }
 });
 
