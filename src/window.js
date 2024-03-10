@@ -36,8 +36,8 @@ export const HttpCodesWindow = GObject.registerClass({
 
   buildThisPage() {
     // This is really necessary? NO, but I wan't my code "pretty" and legible
-    var thisPage = null;
-    thisPage = HttpCodesIndexPageHandler.buildPage();
+    var thisPage;
+    thisPage = HttpCodesIndexPageHandler.buildPage(this._navigation_view);
     thisPage = HttpCodesIndexPageHandler.feedPage(HttpCodesIndex, thisPage)
     this._navigation_view.add(thisPage)
   }
