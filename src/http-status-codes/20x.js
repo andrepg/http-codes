@@ -70,24 +70,28 @@ export const HttpCodes20x = [
     code: "206",
     title: "Partial Content",
     description: "Server is delivering only part of requested resource",
-    explanation: ""
+    explanation: "Client asked for a range of bytes - to resume or split multiple downloads" +
+      " and server sent only what you want to this request."
   },
   {
     code: "207",
     title: "Multi-Status",
     description: "When using WebDav, body can contain multiple response codes",
-    explanation: ""
+    explanation: "This means that you received some file with multiple HTTP responses inside." +
+      " Often happes when multiple files or resources were requested by client."
   },
   {
     code: "208",
     title: "Already Reported",
     description: "This DAV resource has already been enumerated and not being included again",
-    explanation: ""
+    explanation: "The resource that you request was already enumerated by a 207 response and" +
+      " will likely not be processed again",
   },
   {
     code: "226",
     title: "IM Used",
     description: "Your request was processed and your response contains one or more manipulations",
-    explanation: ""
+    explanation: "Know as <b>Delta Encoding</b>, this response is not supported by browsers," +
+      " and it is used by some IM software to receive a manipulated instance of your request.",
   },
 ];
