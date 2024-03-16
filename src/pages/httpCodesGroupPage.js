@@ -24,8 +24,13 @@ const HttpCodesGroupPageHandler = {
       });
 
       row.add_prefix(this.buildPrefix(singleCode.code));
-      row.add_row(this.buildExplanation(singleCode.explanation));
-      row.connect('notify::expanded', this.handleItemClick.bind(this))
+      row.set_enable_expansion(singleCode.explanation !== '');
+
+      if (row.get_enable_expansion) {
+        row.add_row(this.buildExplanation(singleCode.explanation));
+        row.connect('notify::expanded', this.handleItemClick.bind(this));
+      }
+
 
       page.add_list_item(row);
     })
@@ -54,6 +59,7 @@ const HttpCodesGroupPageHandler = {
     });
 
     explanation = new Gtk.Label({ label: explanation });
+    explanation.set_css_classes(['caption']);
     explanation.set_justify(Gtk.Justification.FILL);
     explanation.set_wrap(true);
     explanation.set_hexpand(true);
