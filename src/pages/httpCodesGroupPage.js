@@ -23,14 +23,8 @@ const HttpCodesGroupPageHandler = {
         subtitle: singleCode.description
       });
 
-      row.add_prefix(this.buildPrefix(singleCode.code));
-      row.set_enable_expansion(singleCode.explanation !== '');
-
-      if (row.get_enable_expansion) {
-        row.add_row(this.buildExplanation(singleCode.explanation));
-        row.connect('notify::expanded', this.handleItemClick.bind(this));
-      }
-
+      row.add_prefix(this.buildPrefixWidget(singleCode.code));
+      this.addExplanationRow(row, singleCode);
 
       page.add_list_item(row);
     })
@@ -38,7 +32,16 @@ const HttpCodesGroupPageHandler = {
     return page;
   },
 
-  buildPrefix: function(code) {
+  addExplanationRow: function(row, code) {
+    row.set_enable_expansion(code.explanation !== '');
+
+    if (row.get_enable_expansion) {
+      row.add_row(this.buildExplanationWidget(code.explanation));
+      row.connect('notify::expanded', this.handleItemClick.bind(this));
+    }
+  },
+
+  buildPrefixWidget: function(code) {
     const
       alignment_settings = { valign: Gtk.Align.CENTER, halign: Gtk.Align.CENTER },
       prefix_label = new Gtk.Label({ label: code });
@@ -50,7 +53,7 @@ const HttpCodesGroupPageHandler = {
     return prefix;
   },
 
-  buildExplanation: function(explanation) {
+  buildExplanationWidget: function(explanation) {
     var box = new Gtk.Box({
       margin_start: 10,
       margin_end: 10,
@@ -64,6 +67,7 @@ const HttpCodesGroupPageHandler = {
     explanation.set_wrap(true);
     explanation.set_hexpand(true);
     explanation.set_vexpand(true);
+    explanation.set_use_markup(true);
 
     box.append(explanation)
 
