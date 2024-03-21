@@ -145,73 +145,89 @@ export const HttpCodes40x = [
     code: "417",
     title: "Expectation Failed",
     description: "The server can not meet expectations of your request",
-    explanation: ""
+    explanation: "Indicates that response given by server failed expectation defined " +
+      "in <tt>Expect</tt> header. "
   },
   {
     code: "418",
     title: "I'm a Teapot!",
     description: "An easter egg implemented in 1998. Sometimes used as teapot",
-    explanation: ""
+    explanation: "This code is just a joke, and indicates that server refuses " +
+      "to prepare coffee because it's a teapot."
   },
   {
     code: "421",
     title: "Misdirect Request",
     description: "The server you hit is not able to produce a response",
-    explanation: ""
+    explanation: "The request was redirect to a server that was not able to " +
+      "produce a valid response for any reason (network, timeout, etc.)"
   },
   {
     code: "422",
     title: "Unprocessable Content",
-    description: "Your request was correct, but something failed processing it",
-    explanation: ""
+    description: "Your request was received, but something failed processing it",
+    explanation: "Usually means that you hit a valid endpoint, but your request could " +
+      "not be processed for any reason - validations, formatting, encoding, etc. " +
+      "<b>When receiving this code you should not make another request without changes.</b>"
   },
   {
     code: "423",
     title: "Locked",
     description: "The resource requested is locked",
-    explanation: ""
+    explanation: "You are accessing a resource that is locked. Usually returned when dealing " +
+      "with WebDAV requests, indicating that a file it is already in use and can not be modified."
   },
   {
     code: "424",
     title: "Failed Dependency",
     description: "The request has another dependency that failed",
-    explanation: ""
+    explanation: "Means that current request depends on another one, that failed " +
+      "and, therefore, server can not continue processing."
   },
   {
     code: "425",
     title: "Too Early",
     description: "You are too early. Try this request again later",
-    explanation: ""
+    explanation: "Indicates that server do not want risk processing a request " +
+      "that might be replayed soon. You should wait more time to do this again."
   },
   {
     code: "426",
     title: "Upgrade Required",
     description: "Your request needs an upgrade to be processed",
-    explanation: ""
+    explanation: "Indicates that you should update your HTTP protocol when " +
+      "doing this request. Otherwise you'll keep receiving this code."
   },
   {
     code: "428",
     title: "Precondition Required",
     description: "Your request does not meet some server preconditions",
-    explanation: ""
+    explanation: "Use to validate conditions before execute some request made. " +
+      "It means, that your request is missing <tt>If-Match</tt> header, and this " +
+      "header should match the one required by the server."
   },
   {
     code: "429",
     title: "Too Many Requests",
     description: "You have made A LOT of requests. Be cool and try again later",
-    explanation: ""
+    explanation: "It says all. You made more requests than allowed on server per second and was blocked. " +
+      "Now you should wait as indicated in <tt>Retry-After</tt> header before trying again."
   },
   {
     code: "431",
     title: "Request Header Fields Too Large",
     description: "Your headers are too large. The server is crying",
-    explanation: ""
+    explanation: "Indicates that server refuses to process you request because " +
+      "your headers exceed maximum allowed. You should try reduce it before repeating " +
+      "request. It can be either a single header or entire payload. <b>One of them is too big</b>."
   },
   {
     code: "451",
     title: "Unavailable for Legal Reasons",
     description: "Someone took down this request for legal reasons",
-    explanation: ""
+    explanation: "The resource you request was taken down by some legal action " +
+      "and it is not available anymore. Can contain a <tt>Link</tt> header identifying " +
+      "block requester entity."
   },
 ];
 
