@@ -6,12 +6,12 @@ import { HttpCodesIndex } from "../http-status-codes/index.js";
 
 const HttpCodesGroupPageHandler = {
   buildPage: function(target) {
-    var page = new SingleNavigationPage();
+    this.page = new SingleNavigationPage();
 
-    page.set_title("Choose a HTTP Status code")
-    page.set_label('Code Group ' + target)
+    this.page.set_title("Choose a HTTP Status code")
+    this.page.set_label('Code Group ' + target)
 
-    return page;
+    return this.page;
   },
 
   feedPage: function(page, target) {
@@ -37,7 +37,6 @@ const HttpCodesGroupPageHandler = {
 
     if (row.get_enable_expansion) {
       row.add_row(this.buildExplanationWidget(code.explanation));
-      row.connect('notify::expanded', this.handleItemClick.bind(this));
     }
   },
 
@@ -73,16 +72,6 @@ const HttpCodesGroupPageHandler = {
 
     return box;
   },
-
-  handleItemClick: function(caller) {
-    // get index from caller
-    console.log(caller.parent, caller)
-    // check if expanded or not
-    if (caller.get_expanded()) {
-      console.log('opening row')
-    }
-    // close all others if this is expading
-  }
 }
 
 export default HttpCodesGroupPageHandler
