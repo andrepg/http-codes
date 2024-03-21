@@ -101,7 +101,7 @@ export const HttpCodes40x = [
     code: "411",
     title: "Length Required",
     description: "Your request does not fit minimum length requirements from server",
-    explanation: "The server refuses to accept your request without a <tt>Content-Length<tt> " +
+    explanation: "The server refuses to accept your request without a <tt>Content-Length</tt> " +
       "header before you make this request again."
   },
   {
