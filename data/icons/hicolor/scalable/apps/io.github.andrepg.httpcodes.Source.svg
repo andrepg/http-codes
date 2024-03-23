@@ -28,14 +28,46 @@
   <defs
      id="defs3">
     <linearGradient
+       id="linearGradient8"
+       inkscape:collect="always">
+      <stop
+         style="stop-color:#345493;stop-opacity:1;"
+         offset="0"
+         id="stop7" />
+      <stop
+         style="stop-color:#5678e8;stop-opacity:1;"
+         offset="0.15603299"
+         id="stop9" />
+      <stop
+         style="stop-color:#345493;stop-opacity:1;"
+         offset="0.28811195"
+         id="stop11" />
+      <stop
+         style="stop-color:#345493;stop-opacity:1;"
+         offset="0.77833337"
+         id="stop10" />
+      <stop
+         style="stop-color:#5678e8;stop-opacity:1;"
+         offset="0.89826828"
+         id="stop12" />
+      <stop
+         style="stop-color:#345493;stop-opacity:1;"
+         offset="1"
+         id="stop8" />
+    </linearGradient>
+    <linearGradient
        id="linearGradient59"
        inkscape:collect="always">
       <stop
-         style="stop-color:#291ab5;stop-opacity:1;"
+         style="stop-color:#345493;stop-opacity:1;"
          offset="0"
          id="stop59" />
       <stop
-         style="stop-color:#7e47e2;stop-opacity:1;"
+         style="stop-color:#446aba;stop-opacity:1;"
+         offset="0.04075912"
+         id="stop13" />
+      <stop
+         style="stop-color:#345493;stop-opacity:1;"
          offset="1"
          id="stop60" />
     </linearGradient>
@@ -554,14 +586,24 @@
        y2="619.96387" />
     <linearGradient
        inkscape:collect="always"
-       xlink:href="#linearGradient59"
+       xlink:href="#linearGradient8"
        id="linearGradient60"
-       x1="-619.74396"
-       y1="527.57617"
-       x2="-620.54993"
-       y2="345.06039"
+       x1="-589.29901"
+       y1="395.32007"
+       x2="-660.46881"
+       y2="395.12451"
        gradientUnits="userSpaceOnUse"
-       gradientTransform="matrix(1.9519654,0,0,2.2866433,593.09805,-492.8044)" />
+       gradientTransform="matrix(1.9519654,0,0,2.2866433,590.59968,-490.88032)" />
+    <linearGradient
+       inkscape:collect="always"
+       xlink:href="#linearGradient59"
+       id="linearGradient5"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.9519654,0,0,2.2866433,590.59968,-492.8044)"
+       x1="-636.9325"
+       y1="368.32095"
+       x2="-637.08624"
+       y2="420.63376" />
   </defs>
   <sodipodi:namedview
      stroke="#ef2929"
@@ -572,9 +614,9 @@
      borderopacity="0.25490196"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="6.6415235"
-     inkscape:cx="75.660351"
-     inkscape:cy="75.810919"
+     inkscape:zoom="9.3925326"
+     inkscape:cx="59.462131"
+     inkscape:cy="94.702892"
      inkscape:current-layer="layer9"
      showgrid="false"
      inkscape:grid-bbox="true"
@@ -2374,12 +2416,19 @@
          id="g1365-5"
          transform="matrix(0.80052088,0,0,1.0394565,565.76819,-166.87126)">
         <path
+           id="path5"
+           style="display:inline;fill:url(#linearGradient60);stroke-width:2.23281;enable-background:new"
+           d="m -672.83425,355.07014 c -14.60279,0 -26.35534,13.77208 -26.35534,30.8786 0,17.10658 11.99465,32.04432 26.59744,32.04432 0,0 3.19549,-0.30404 3.10543,0.39552 -1.07255,8.33165 -4.34633,21.02422 -4.34633,21.02422 l 45.3268,-21.41974 h 42.59527 c 14.60281,0 26.11326,-14.93774 26.11326,-32.04432 0,-17.10652 -11.75255,-30.8786 -26.35536,-30.8786 z"
+           sodipodi:nodetypes="ssssccssss" />
+        <path
            id="rect58"
-           style="fill:url(#linearGradient60);stroke-width:2.23281"
-           d="m -670.33588,353.14606 c -14.60279,0 -26.35534,13.77208 -26.35534,30.8786 0,17.10658 11.75255,30.87862 26.35534,30.87862 h 2.73842 l -3.02416,21.62933 44.37164,-21.62933 h 42.59527 c 14.60281,0 26.35536,-13.77204 26.35536,-30.87862 0,-17.10652 -11.75255,-30.8786 -26.35536,-30.8786 z" />
+           style="fill:url(#linearGradient5);stroke-width:2.23281"
+           d="m -672.83425,353.14606 c -14.60279,0 -26.35534,13.77208 -26.35534,30.8786 0,17.10658 11.75255,30.87862 26.35534,30.87862 h 2.73842 l -3.02416,21.62933 44.37164,-21.62933 h 42.59527 c 14.60281,0 26.35536,-13.77204 26.35536,-30.87862 0,-17.10652 -11.75255,-30.8786 -26.35536,-30.8786 z" />
         <g
            id="g62"
-           transform="matrix(0.82339611,0,0,0.82339611,-132.5075,67.295434)">
+           transform="matrix(0.82339611,0,0,0.82339611,-132.5075,67.295434)"
+           sodipodi:insensitive="true"
+           style="display:inline">
           <g
              id="g63"
              transform="matrix(-0.26833723,0.21480956,-0.33520329,-0.26833723,-723.26409,671.63909)">
