@@ -4,5 +4,5 @@ Exec=io.github.andrepg.httpcodes
 Icon=io.github.andrepg.httpcodes
 Terminal=false
 Type=Application
-Categories=GTK;Productivity
+Categories=GTK;
 StartupNotify=true
