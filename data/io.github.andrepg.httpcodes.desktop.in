@@ -1,8 +1,8 @@
 [Desktop Entry]
-Name=http-codes
+Name=Codes
 Exec=io.github.andrepg.httpcodes
 Icon=io.github.andrepg.httpcodes
 Terminal=false
 Type=Application
-Categories=GTK;
+Categories=GTK;Productivity
 StartupNotify=true

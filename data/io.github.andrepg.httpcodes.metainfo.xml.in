@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
-	<id>io.github.andrepg.httpcodes.desktop</id>
-	<metadata_license>CC0-1.0</metadata_license>
+  <metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
+
+  <id>io.github.andrepg.httpcodes.desktop</id>
+  <name>HTTP Codes Handbook</name>
+  <summary>A lightweight HTTP Codes handbook to research while offline</summary>
+  <developer>io.github.andrepg</developer>
+
 	<description>
-	  <p>No description</p>
+	  <p>
+	    A simple app to search and understand better HTTP Codes returned by
+	    a server while making a request.
+	  </p>
 	</description>
+
+  <categories>
+    <category>Productivity</category>
+  </categories>
+
+  <url type="homepage">https://github.com/andrepg/http-codes</url>
 </component>

@@ -37,7 +37,8 @@
             "sources" : [
                 {
                     "type" : "git",
-                    "url" : "file:///var/home/andre/Projetos"
+                    "url" : "https://github.com/andrepg/http-codes.git",
+		    "branch": "main"
                 }
             ]
         }
