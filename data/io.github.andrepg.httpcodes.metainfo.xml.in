@@ -3,10 +3,12 @@
   <metadata_license>CC0-1.0</metadata_license>
 	<project_license>GPL-3.0-or-later</project_license>
 
-  <id>io.github.andrepg.httpcodes.desktop</id>
+  <id>io.github.andrepg.httpcodes</id>
   <name>HTTP Codes Handbook</name>
   <summary>A lightweight HTTP Codes handbook to research while offline</summary>
   <developer>io.github.andrepg</developer>
+
+  <launchable type="desktop-id">io.github.andrepg.http-codes.desktop</launchable>
 
 	<description>
 	  <p>
