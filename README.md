@@ -62,8 +62,9 @@ You can always help the project development by donating via GitHub Sponsor or Pa
 
 This is a prototype. And it's developed primary in English as my second language. So a little help on translating and improvement we'll be welcome. We don't even have our app ready to translation yet. *So it's a long road*.
 
-3. Enhacements and Bug reports
+3. **Enhacements and Bug reports**
 
 Finally, if you have suggestions or improvements that you'll be pleased to see in your app, there's always a possibility to fill an issue or open a Pull Request if your proposals.
 
-Remember: this is a free (as in free beer 🍻), side project developed with learning purposes. Please don't push hard.
+
+> Remember: this is a free (as in free beer 🍻), side project developed with learning purposes. Please don't push hard.
