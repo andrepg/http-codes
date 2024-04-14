@@ -22,7 +22,7 @@ jobs:
       - run: npm run build
         working-directory: ./website
 
-      - uses: actions/upload-page-artifact@v1        
+      - uses: actions/upload-pages-artifact@v3.0.1      
         with:
           name: "website-build-artifact"
           path: "website/dist/**"
