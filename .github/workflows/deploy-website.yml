@@ -25,8 +25,7 @@ jobs:
       - uses: actions/upload-pages-artifact@v3.0.1      
         with:
           name: "website-build-artifact"
-          path: "website/dist/**"
-          overwrite: true
+          path: ./website/dist
 
   deploy:
     needs: build
