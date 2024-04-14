@@ -10,7 +10,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - run: cd ${{github.workspace}}/website/
 
       - uses: actions/setup-node@v4
         with:
@@ -19,12 +18,14 @@ jobs:
           cache-dependency-path: website/package-lock.json
           
       - run: npm ci
+        working-directory: ./website
       - run: run run build
+        working-directory: ./website
 
-      - uses: actions/upload-artifact@v4.3.1
+      - uses: actions/upload-artifact@v4.3.1        
         with:
           name: "website-build-artifact"
-          path: "dist/**"
+          path: "website/dist/**"
           overwrite: true
 
   deploy:
