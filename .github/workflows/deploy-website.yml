@@ -10,13 +10,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+      - run: cd ${{github.workspace}}/website/
+
       - uses: actions/setup-node@v4
         with:
           node-version: "18.x"
           cache: "npm"
-
-      - run: cd ${{github.workspace}}/website/
-
       - run: npm ci
       - run: run run build
 
