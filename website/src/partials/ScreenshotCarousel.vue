@@ -6,7 +6,7 @@ import screenshotThirdScreen from "@/assets/screenshots/screen_http_code_list_wi
 </script>
 
 <template>
-    <div class="flex flex-col justify-start items-center lg:flex-row w-full">
+    <div class="flex flex-col justify-start items-center lg:flex-row w-full xl:justify-center">
         <div class="">
             <img class="transition transform duration-250 scale-100 hover:scale-105 " :src="screenshotFirstScreen"
                 alt="">

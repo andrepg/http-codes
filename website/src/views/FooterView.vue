@@ -4,9 +4,9 @@ import { Icon } from "@iconify/vue";
 
 <template>
     <footer class="w-full h-min-20 relative bg-slate-900 text-slate-100 py-5 px-2
-        flex flex-col md:flex-row md:flex-wrap md:gap-y-10 pb-20 md:px-5
+        flex flex-col md:flex-row md:flex-wrap md:gap-y-10 pb-20 md:px-5 gap-y-5
     ">
-        <div class="flex flex-col w-1/2">
+        <div class="flex flex-col w-full gap-3 md:w-1/2">
             <p class="mb-2">Made with 🤍 accross the world!</p>
             <small>
                 <Icon class="inline h-5 w-auto" icon="ei:chevron-right" />
@@ -26,7 +26,7 @@ import { Icon } from "@iconify/vue";
             </small>
         </div>
 
-        <div class="flex flex-col w-1/2">
+        <div class="flex flex-col w-full gap-3 md:w-1/2">
             <p class="mb-2">Some disclaimers</p>
 
             <small class="text-sm">

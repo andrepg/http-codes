@@ -17,7 +17,7 @@ const closeMenu = () => isClosed.value = true;
 
         <nav :aria-expanded="!isClosed" class='flex flex-col md:flex-row flex-no-wrap gap-1 md:gap-2 py-0 transition duration-500 opacity-0 h-0 
             aria-expanded:opacity-100 aria-expanded:h-full aria-expanded:py-2 md:aria-expanded:py-4 aria-expanded:duration-200
-            md:opacity-100 md:py-2 md:h-auto'>
+            md:opacity-100 md:py-2 md:h-auto lg:py-6 lg:px-4'>
             <NavLink :onClick="closeMenu" target="#hero">Home</NavLink>
             <NavLink :onClick="closeMenu" target="#why">Why?</NavLink>
             <NavLink :onClick="closeMenu" target="#more-info">More Info</NavLink>

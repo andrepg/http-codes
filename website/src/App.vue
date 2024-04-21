@@ -1,8 +1,10 @@
 <script setup>
 import { RouterView } from 'vue-router';
 import { Icon } from "@iconify/vue";
+import { inject } from "vue"
 import NavigationMenu from '@/partials/NavigationMenu.vue'
 
+const links = inject("links")
 </script>
 
 <template>
@@ -15,7 +17,7 @@ import NavigationMenu from '@/partials/NavigationMenu.vue'
     </div>
 
     <a class="flex flex-row w-auto transition duration-250 scale-100 hover:scale-150 hover:rotate-2 hover:animate-pulse self-start py-3 md:self-center md:py-0"
-      href="https://github.com/andrepg/http-codes" target="_blank" rel="nofollow">
+      :href="links.github" target="_blank" rel="nofollow">
       <Icon class="w-10 h-10" icon="ei:sc-github" />
     </a>
   </header>
