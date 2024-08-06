@@ -1,0 +1,33 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.exclude": {
+			"**/.git": true,
+			"**/.svn": true,
+			"**/.hg": true,
+			"**/CVS": true,
+			"**/.DS_Store": true,
+			"**/Thumbs.db": true,
+			".flatpak-builder/**": true,
+			"website/**": true,
+			"__build/**": true
+		},
+		"files.watcherExclude": {
+			"**/.git/objects/**": true,
+			"**/.git/subtree-cache/**": true,
+			"**/node_modules/*/**": true,
+			"**/.hg/store/**": true,
+			".flatpak/**": true,
+			"_build/**": true,
+			"website/**": true
+		},
+		"mesonbuild.languageServer": "mesonlsp",
+		"mesonbuild.configureOnOpen": false,
+		"mesonbuild.buildFolder": "_build",
+		"mesonbuild.mesonPath": "${workspaceFolder}/.flatpak/meson.sh"
+	}
+}
