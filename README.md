@@ -1,3 +1,5 @@
+<!-- GitAds-Verify: CBCUQUB2Z889IYMN4Q4N5A9TPQCV18BH -->
+
 # 🖥 Codes Handbook
 Codes is a simple and lightweight handbook with HTTP Codes information returned by a server whener you make a request.
 
