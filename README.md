@@ -1,8 +1,3 @@
-<!-- GitAds-Verify: CBCUQUB2Z889IYMN4Q4N5A9TPQCV18BH -->
-## GitAds Sponsored
-[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=andrepg/http-codes@github)](https://gitads.dev/v1/ad-track?source=andrepg/http-codes@github)
-
-
 # 🖥 Codes Handbook
 Codes is a simple and lightweight handbook with HTTP Codes information returned by a server whener you make a request.
 
@@ -73,3 +68,7 @@ Finally, if you have suggestions or improvements that you'll be pleased to see i
 
 
 > Remember: this is a free (as in free beer 🍻), side project developed with learning purposes. Please don't push hard.
+
+<!-- GitAds-Verify: CBCUQUB2Z889IYMN4Q4N5A9TPQCV18BH -->
+## GitAds Sponsored
+[![Sponsored by GitAds](https://gitads.dev/v1/ad-serve?source=andrepg/http-codes@github)](https://gitads.dev/v1/ad-track?source=andrepg/http-codes@github)
